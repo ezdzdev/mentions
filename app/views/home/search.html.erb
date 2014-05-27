@@ -6,3 +6,9 @@
 	  </p>
 	<% end %>
 <% end %>
+
+<ol>
+	<% @tweet_news.each do |tweet| %>
+    	<li><%= twitter_text(tweet.text) %></li>
+    <% end %>
+</ol>

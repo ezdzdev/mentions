@@ -1,13 +1,15 @@
 Rails.application.routes.draw do
   # Success Callback
-  get 'auth/twitter/callback', to: 'sessions#create'
+  get 'auth/:provider/callback', to: 'sessions#create'
   # Fail Callback
   get 'auth/failure', to: redirect('/')
   # Sign out
   get 'signout', to: 'sessions#destroy', as: 'signout'
 
+  post 'search', to: 'home#search'
+
   resources :sessions, only: [:create, :destroy]
-  resource :home, only: [:show]
+  resource :home, only: [:create, :show]
  
   root to: 'home#show'
 
