@@ -12,8 +12,11 @@
 
 <% $mentions.each do |tweet| %>
 	<%= tweet.html.html_safe %>
-	<% if tweet.html.scan('<a href="http://t.co/') != [] %>
-		<%= link_to 'lol', '/lol_pics/lol?id='+tweet.url, :anchor => "end" %> 
+	<% if tweet.html.scan('<a href="http://t.co/').any? %>
+		<%= link_to 'lol', '/lol_pics/lol?id='+tweet.url, :onclick=>
+			"var win = window.open(this.href);
+			 win.onload = win.close();
+			 return false;" %>
 	<% end %>
 	<br>
 	<br>
@@ -22,5 +25,5 @@
 
 <%= link_to 'Top', '#' %>
 <% if @tweetIDs.count == 5 %>
- | <%= link_to 'More', '/search?cmd=more' %>
+ | <%= link_to 'More', '/search?cmd=more#more', :anchor => 'more' %>
 <% end %>

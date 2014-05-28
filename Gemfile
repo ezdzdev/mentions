@@ -29,7 +29,6 @@ gem 'spring',        group: :development
 # My own gems
 gem 'omniauth-twitter'
 gem 'twitter'
-gem 'twitter-text'
 gem 'pg'
 
 # Use ActiveModel has_secure_password

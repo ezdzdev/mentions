@@ -1,11 +1,23 @@
 class HomeController < ApplicationController 
   # Show (root)
   def show
+  	# Recover our session id if possible
+  	if User.where(rip: request.remote_ip.to_s).any? 
+		session[:user_id] ||= User.where(rip: request.remote_ip.to_s).first.id 
+		# Set up client
+	    $client ||= Twitter::REST::Client.new do |config| 
+	      config.consumer_key = Rails.application.secrets.consumer_key
+	      config.consumer_secret = Rails.application.secrets.consumer_secret
+	      config.access_token = User.find(session[:user_id]).oauth_token
+	      config.access_token_secret = User.find(session[:user_id]).oauth_secret
+		end if session[:user_id]
+	end
+
+  	
   end
 
   # Search for mentions
   def search
-
   	# Process search based on param, or a clean search
     if ( params[:cmd] == 'more' )   
       request_results = $client.search('@' + $username, :result_type => 'recent', :max_id => $last_id - 1)
@@ -24,7 +36,6 @@ class HomeController < ApplicationController
     request_results.each do |tweet|
       # If media is present, we want to create a new LolPic, but we don't save until it gets lol'd
       $tweetPics.push(LolPic.new("pid" => tweet.id.to_s, "url" => tweet.media[0]['media_url'].to_s)) if tweet.media.present?
-      puts $tweetPics
   	  @tweetIDs.push(tweet.id);
 
   	  # Because twitter is stupid
