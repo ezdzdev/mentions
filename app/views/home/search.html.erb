@@ -1,7 +1,7 @@
 <% if !current_user.nil? %>
 	<%= form_for :home, url: 'search' do |f| %>
 		<p>
-			<%= f.text_field :'username', :value=>$username %>
+			<%= f.text_field :'@', :value=>$username %>
 			<%= f.submit "Search" %>
 		</p>
 	<% end %>
@@ -9,17 +9,11 @@
 
 <strong><%= $username %></strong> mentions
 <ol>
-	<% cache do %>
-		<% @mentions.each do |tweet| %>
-			<li>
-				<%= tweet.html.html_safe %>
-			</li>
-		<% end %>
+	<% $mentions.each do |tweet| %>
+		<li>
+			<%= tweet.html.html_safe %>
+		</li>
 	<% end %>
 </ol>
 
-<%= link_to 'Top', '#' %> | 
-<% if @page_num != 1 -%>
-	<%= link_to 'Prev', '?cmd=prev' %> |  
-<% end -%> 
-<%= link_to 'Next', '?cmd=next' %>
+<%= link_to 'Top', '#' %> | <%= link_to 'More', '?cmd=more' %>
