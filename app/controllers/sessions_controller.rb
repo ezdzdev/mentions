@@ -1,24 +1,20 @@
 class SessionsController < ApplicationController
   def create
-  	# render :text => request.env["omniauth.auth"].to_yaml
+  	# Create the user record
     user = User.from_omniauth(env["omniauth.auth"])
+
+    # Create the user_id in session
     session[:user_id] = user.id
     
-    # TODO: Save the user.oauth_token and .oauth_secret into database
-    $client = Twitter::REST::Client.new do |config|
-      config.consumer_key = Rails.application.secrets.consumer_key
-      config.consumer_secret = Rails.application.secrets.consumer_secret
-      config.access_token = user.oauth_token
-      config.access_token_secret = user.oauth_secret
-    end
-
     redirect_to root_path
   end
  
   def destroy
-    session[:user_id] = nil
+    # Delete the user access tokens on logout
+    User.find(session[:user_id]).delete
 
-    #TODO: Delete the user.oauth_token and .oauth_secret from database
+    # Delete the session as well
+    session = {}
     
     redirect_to root_path
   end

@@ -1,4 +1,7 @@
 Mentions-lol
 ============
 
-Search for mentions of any username!
+Search through mentions of any username through twitter. 'lol' the pictures you like to save them!
+
+
+

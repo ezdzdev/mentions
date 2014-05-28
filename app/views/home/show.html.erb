@@ -1,7 +1,8 @@
 <% if !current_user.nil? %>
-	<%= form_for :home, url: 'search' do |f| %>
+	<%= form_for :home, url: '/search' do |f| %>
 	  <p>
-	    <%= f.text_field :'username', :value=>'@' %>
+	  	<%= f.label :'@'%>
+	    <%= f.text_field :username%>
 	    <%= f.submit "Search" %>
 	  </p>
 	<% end %>

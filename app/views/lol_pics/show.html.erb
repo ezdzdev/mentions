@@ -1,0 +1,5 @@
+<%= link_to 'Search', '/' %> 
+<% @lols.each do |lol|%>
+	<%= image_tag(lol.url.to_s) %>
+	<br><br>
+<% end %>

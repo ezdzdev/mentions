@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  # Resources
+  resource :sessions, only: [:create, :destroy]
+  resource :home, only: [:show, :search]
+  resource :lol_pics, only: [:lol, :show] do
+    get 'lol'
+  end
+
   # Success Callback
   get 'auth/:provider/callback', to: 'sessions#create'
   # Fail Callback
@@ -7,11 +14,9 @@ Rails.application.routes.draw do
   get 'signout', to: 'sessions#destroy', as: 'signout'
   # Search
   post 'search', to: 'home#search'
+  # double the action search for 'More'
+  get 'search', to: 'home#search' 
 
-  get 'search', to: 'home#search'
-
-  resources :sessions, only: [:create, :destroy]
-  resource :home, only: [:show, :search]
  
   root to: 'home#show'
 

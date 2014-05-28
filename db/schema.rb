@@ -11,7 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140527064044) do
+ActiveRecord::Schema.define(version: 20140528211152) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "lol_pics", force: true do |t|
+    t.string   "pid"
+    t.string   "url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "uid"
+  end
+
+  add_index "lol_pics", ["pid"], name: "index_lol_pics_on_pid", unique: true, using: :btree
+  add_index "lol_pics", ["url"], name: "index_lol_pics_on_url", unique: true, using: :btree
 
   create_table "users", force: true do |t|
     t.string   "provider"

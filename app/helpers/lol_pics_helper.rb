@@ -1,0 +1,2 @@
+module LolPicsHelper
+end
