@@ -5,11 +5,13 @@ Rails.application.routes.draw do
   get 'auth/failure', to: redirect('/')
   # Sign out
   get 'signout', to: 'sessions#destroy', as: 'signout'
-
+  # Search
   post 'search', to: 'home#search'
 
+  get 'search', to: 'home#search'
+
   resources :sessions, only: [:create, :destroy]
-  resource :home, only: [:create, :show]
+  resource :home, only: [:show, :search]
  
   root to: 'home#show'
 
