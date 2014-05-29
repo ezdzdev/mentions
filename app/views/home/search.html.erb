@@ -15,7 +15,7 @@
 	<% if tweet.html.scan('<a href="http://t.co/').any? %>
 		<%= link_to 'lol', '/lol_pics/lol?id='+tweet.url, :onclick=>
 			"var win = window.open(this.href);
-			 win.onload = win.close();
+			 win.onload = setTimeout(win.close(),1000);
 			 return false;" %>
 	<% end %>
 	<br>
