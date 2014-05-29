@@ -15,7 +15,7 @@
 	<% if tweet.html.scan('<a href="http://t.co/').any? %>
 		<%= link_to 'lol', '/lol_pics/lol?id='+tweet.url, :onclick=>
 			"var win = window.open(this.href);
-			 win.onload = setTimeout(win.close(),1000);
+			 win.onload = setTimeout(function() {win.close()},2000);
 			 return false;" %>
 	<% end %>
 	<br>
@@ -25,5 +25,5 @@
 
 <%= link_to 'Top', '#' %>
 <% if @tweetIDs.count == 5 %>
- | <%= link_to 'More', '/search?cmd=more#more', :anchor => 'more' %>
+ | <%= link_to 'More', '/search?cmd=more' %>
 <% end %>

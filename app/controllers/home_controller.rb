@@ -36,7 +36,7 @@ class HomeController < ApplicationController
     request_results.each do |tweet|
       # If media is present, we want to create a new LolPic, but we don't save until it gets lol'd
       $tweetPics.push(LolPic.new("pid" => tweet.id.to_s, "url" => tweet.media[0]['media_url'].to_s)) if tweet.media.present?
-  	  @tweetIDs.push(tweet.id);
+  	  @tweetIDs.push(tweet.id)
 
   	  # Because twitter is stupid
   	  # (oembed request times out if there are too many ids)
