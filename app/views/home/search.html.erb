@@ -17,7 +17,9 @@
 	<% if tweet.media.present? %>
 		<%= image_tag tweet.media[0]['media_url'], :style=>"border-radius:5px;" %>
 		<br>
-		<%= link_to '<div><i class="fa fa-star"></i></div>'.html_safe, '/lol_pics/lol?url='+tweet.media[0]['media_url'] %>
+		<%= link_to '<div><i class="fa fa-star"></i></div>'.html_safe, 
+		'/lol_pics/lol?url=' + tweet.media[0]['media_url'],
+		:remote => true %>
 	<% end %>
 	<br>
 	<br>

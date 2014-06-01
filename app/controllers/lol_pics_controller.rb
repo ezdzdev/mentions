@@ -4,7 +4,7 @@ class LolPicsController < ApplicationController
     LolPic.new("url" => params[:url], "uid" => User.find(session[:user_id]).uid).save!
   	rescue ActiveRecord::RecordNotUnique
 
-    head :created
+    return;
   end
 
   # Show all pics
