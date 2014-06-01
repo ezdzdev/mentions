@@ -9,6 +9,6 @@ class LolPicsController < ApplicationController
 
   # Show all pics
   def show
-  	@lols = LolPic.where(:uid => User.take.uid)
+  	@lols = LolPic.where(:uid => User.find(session[:user_id]).uid)
   end
 end
