@@ -1,17 +1,10 @@
 class LolPicsController < ApplicationController
   def lol
-  	# The ID is always last
-  	pid = params[:id].scan(/\d+/).last
-	  render :nothing => true
-    
   	# Save the ID
-  	$tweetPics.find do |pic|
-  		if (pic.pid == pid.to_s)
-    		pic.uid = User.take.uid
-  		  pic.save!
-      end
-  	end
+    LolPic.new("url" => params[:url], "uid" => User.find(session[:user_id]).uid).save!
   	rescue ActiveRecord::RecordNotUnique
+
+    head :created
   end
 
   # Show all pics

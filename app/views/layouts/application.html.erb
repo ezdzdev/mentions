@@ -5,8 +5,10 @@
     <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
     <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
     <%= csrf_meta_tags %>
+    <link href="http://fonts.googleapis.com/css?family=Droid+Sans|Raleway:100|Pacifico" rel="stylesheet" type="text/css">
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
   </head>
-  <body>
+  <body style="background-color:#F6FFE8">
     <div>
       <% if current_user %>
         Signed in as <strong><%= current_user.name %></strong>!
@@ -16,7 +18,7 @@
         <%= link_to "Sign in with Twitter", "/auth/twitter", id: "sign_in" %>
       <% end %>
     </div>
-    <h1>Mentions-lol</h1>
+    <h1 style="text-align:center">Mentions-lol</h1>
     <div>
     <%= yield %>
     </div>

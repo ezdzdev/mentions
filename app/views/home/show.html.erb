@@ -1,9 +1,9 @@
 <% if !current_user.nil? %>
-	<%= form_for :home, url: '/search' do |f| %>
-	  <p>
-	  	<%= f.label :'@'%>
-	    <%= f.text_field :username%>
-	    <%= f.submit "Search" %>
-	  </p>
-	<% end %>
+	<div class="form">
+		<%= form_for :home, url: '/search' do |f| %>
+		  	<%= f.label :'@'%>
+		    <%= f.text_field :username, :placeholder=>"Search", :autocomplete=>"off"%>
+		    <i class="fa fa-search" onclick="this.parentNode.submit();"></i>
+		<% end %>
+	</div>
 <% end %>

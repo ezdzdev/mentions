@@ -1,0 +1,84 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+* {
+	transition: 0.5s;
+	font-family: 'Droid Sans', sans-serif;
+	color: #594F4F;
+	box-sizing: border-box
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: 'Pacifico', cursive;
+}
+
+a {
+	font-family: 'Raleway', sans-serif;
+	text-decoration: none;
+	color: #547980;
+
+	&:visited {
+		text-decoration: none;
+		color: #547980;
+	}
+}
+
+img {
+	max-width: 100%;
+}
+
+div {
+	text-align: center;
+
+	i {
+		font-size: 50px;
+	}
+}
+
+.form {
+	height: 40px;
+	width: 230px;
+	line-height: 40px;
+	font-size: 20px;
+	margin: 0 auto;
+	
+	* {
+		color: #E5FCC2;
+		background: #292f33;
+		border-radius: 20px;
+	}
+
+	input {
+	    border: 0px;
+	    height: 40px;
+	    width: 160px;
+	    display: inline;
+	    font-size: 20px;
+
+		&:focus {
+			outline: none;
+		}
+	}
+
+	i {
+		font-size: 20px;
+		cursor: pointer;
+	}
+}
+
+
+
+

@@ -3,12 +3,12 @@ default: &default
   encoding: unicode
   pool: 5
 
-# development:
-#   <<: *default
-#   database: db/development
-#   host: localhost
-#   username: Mahou
-#   password:
+development:
+  <<: *default
+  database: db/development
+  host: localhost
+  username: Mahou
+  password:
 
 # test:
 #   <<: *default
